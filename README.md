@@ -2,24 +2,23 @@
 
 ### _For players new to WarriorJS_
 
-## Level 4
+## Level 5
 
-_You can hear bow strings being stretched._
+_You hear cries for help. Captives must need rescuing._
 
-> **TIP:** No new abilities this time, but you must be careful not to rest while taking damage. Save a `this.health` variable and compare it on each turn to see if you're taking damage.
-
-> **CLUE:** Set `this.health` to your current health at the end of `playTurn`. If this is greater than your current health next turn, then you know you're taking damage and shouldn't rest.
+> **TIP:** Combine `warrior.feel().getUnit().isEnemy()` and `warrior.feel().getUnit().isBound()` to see if there's a captive, and `warrior.rescue()` to rescue him. Don't attack captives.
 
 ### Floor Map
 
 ```
 ╔═══════╗
-║@ Sa S>║
+║@ CaaSC║
 ╚═══════╝
 
 @ = LoganPaul (20 HP)
-S = Thick Sludge (24 HP)
+C = Captive (1 HP)
 a = Archer (7 HP)
+S = Thick Sludge (24 HP)
 > = stairs
 ```
 
@@ -27,16 +26,17 @@ a = Archer (7 HP)
 
 ### Actions (only one per turn)
 
+- `warrior.walk()`: Moves one space in the given direction (`'forward'` by default).
 - `warrior.attack()`: Attacks a unit in the given direction (`'forward'` by default), dealing 5 HP of damage.
 - `warrior.rest()`: Gains 10% of max health back, but does nothing more.
-- `warrior.walk()`: Moves one space in the given direction (`'forward'` by default).
+- `warrior.rescue()`: Releases a unit from his chains in the given direction (`'forward'` by default).
 
 ### Senses
 
+- `warrior.think()`: Thinks out loud (`console.log` replacement).
 - `warrior.feel()`: Returns the adjacent space in the given direction (`'forward'` by default).
 - `warrior.health()`: Returns an integer representing your health.
 - `warrior.maxHealth()`: Returns an integer representing your maximum health.
-- `warrior.think()`: Thinks out loud (`console.log` replacement).
 
 ## Next Steps
 

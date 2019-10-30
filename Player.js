@@ -4,9 +4,6 @@ class Player {
       this.health = 20;
   }
 
-
-// TODO FIX THE HEALTH CHECK TO SEE IF THERE IS AN ARCHER
-
   playTurn(warrior) {
       // if you're busted up, be careful
       if (this.isBustedUp(warrior)) {
@@ -20,6 +17,10 @@ class Player {
             else if(!this.isEnemy(warrior)) {
               warrior.walk();
             }
+          }
+          // if there's no enemy and you are losing health, heal up
+          else if(!this.isEnemy(warrior)) {
+            warrior.rest();
           }
           else {
             // if you aren't losing health, walk back
